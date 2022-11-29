@@ -38,7 +38,7 @@
 
 **NACL, ACG**
 
-![NCP/Service/Networking/images/1_vpc.png](https://github.com/jiwonYun9332/cloud/blob/22e8b34ca67557b2590b0d1563bec470d7edb2d2/NCP/Service/Networking/images/1_vpc.png))
+![NCP/Service/Networking/images/1_vpc.png](https://github.com/jiwonYun9332/cloud/blob/22e8b34ca67557b2590b0d1563bec470d7edb2d2/NCP/Service/Networking/images/1_vpc.png)
 
 | 구분 | ACG | NACL |
 | ------------ | ------------- | ------------- |
@@ -63,9 +63,47 @@ VPC 상에서 복잡한 네트워크 환경을 구성하기 위해 네트워크 
 
 서버의 네트워크 인터페이스에서 송수신되는 네트워크 트래픽에 대해 ACG 를 기반으로 정보를 수집하는 기능을 제공한다. 수집 후 데이터는 오브젝트 스토리지에 저장된다. 단 실시간 로깅이 아닌 15분 가량 지연이 발생할 수 있다.
 
-> 시나리오 1
+> 시나리오 1. 외부와 인터넷 연결이 필요한 서브넷만 사용하는 경우
 
 서브넷에 인터넷 게이트웨이(Internet Gateway)를 연결하여 프론트엔드 전용 서브넷을 구성할 수 있다.
+
+![2_vpc](https://github.com/jiwonYun9332/cloud/blob/9a5e9a5b4a6fe9f436ec3d79711956b2ab8a5831/NCP/Service/Networking/images/2_vpc.png)
+
+> 시나리오 2. 외부와 인터넷 연결이 필요한 서브넷과 이와 별개로 중요 데이터를 저장하기 위해 외부 접속을 최소화하기 위한 서브넷을 구성하는 경우
+
+하나의 서브넷에 인터넷 게이트웨이를 연결하여 프론트엔드 전용 서브넷을 구성하고, 다른 하나의 서브넷에는 NAT 게이트웨이를 연결하여 백엔드용 서브넷으로 활용할 수 있다.
+
+![3_vpc](https://github.com/jiwonYun9332/cloud/blob/9a5e9a5b4a6fe9f436ec3d79711956b2ab8a5831/NCP/Service/Networking/images/3_vpc.png)
+
+> 시나리오 3. Cloud Connect 만을 이용하여 접근할 수 있는 서브넷을 구성하는 경우
+
+고객의 전산망을 클라우드로 확장한 하이브리드 클라우드 구성으로 오직 Cloud Connect 을 통해 접속 가능한 서브넷을 구성할 수 있다.
+
+![4_vpc](https://github.com/jiwonYun9332/cloud/blob/9a5e9a5b4a6fe9f436ec3d79711956b2ab8a5831/NCP/Service/Networking/images/4_vpc.png)
+
+> 시나리오 4. 외부와 인터넷 연결이 필요한 서브넷과 이와 별개로 외부 인터넷 연결을 차단하고 VPN 을 통해 On-Premise 에서만 접근할 수 있는 서브넷을 구성하는 경우
+
+하나의 서브넷에 인터넷 게이트웨이를 연결하여 프론트엔드 전용 서브넷을 구성하고, 다른 하나의 서브넷에 IPSec VPN 을 연결하여 VPN 전용 서브넷(VPN Only Subnet) 을 구성할 수 있다.
+
+![5_vpc](https://github.com/jiwonYun9332/cloud/blob/9a5e9a5b4a6fe9f436ec3d79711956b2ab8a5831/NCP/Service/Networking/images/5_vpc.png)
+
+> 시나리오 5. 하이브리드 연결 시 IPSec VPN 과 Cloud Connect 두 개의 회선을 이중화하여 구성하는 경우
+
+외부 연결이 불필요한 백엔드 서브넷과 고객 온-프레미스 간에 IPSec VPN과 Cloud Connect 두 개의 회선을 Virtual Private Gateway 를 이용하여 이중화할 수 있다.
+
+![6_vpc](https://github.com/jiwonYun9332/cloud/blob/9a5e9a5b4a6fe9f436ec3d79711956b2ab8a5831/NCP/Service/Networking/images/6_vpc.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
