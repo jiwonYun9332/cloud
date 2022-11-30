@@ -26,7 +26,6 @@ Server Name: ipsec-server-a
 
 OS: CentOS 7.8-64
 
-
 ### 4. ACG Accept 규칙 설정
 
 TCP,UDP 0.0.0.0/0 1-65535
@@ -39,6 +38,35 @@ Virtual Private Gateway Name: ipsec-vpg-a
 
 Virtual Private Gateway Group Name: ipsec-vpgg-a
 
+### 6. IPSec VPN 생성
+
+IPSec VPN Name: ipsec-vpn-a
+
+IPSec VPN Tunnel Name: ipsec-vpn-tunnel-a
+
+Peer IP: b계정 ipsec-vpn
+
+Local Network: 192.168.65.0/24
+
+Remote Network: 192.168.75.0/24
+
+IKE Version: IKEv2
+
+IKE Negotiation Mode: main
+
+IKE Pre-sharedkey: ***
+
+IPSec Proposal: aes-128
+
+DH-Group: 5
+
+Hash: sha256
+
+Lifetime: 3600
+
+DPD Retry Interval: 10/Second
+
+DPD Retry Count: 2
 
 ## **B 계정 환경설정**
 
@@ -73,6 +101,32 @@ Virtual Private Gateway Name: ipsec-vpg-b
 
 Virtual Private Gateway Group Name: ipsec-vpgg-b
 
+### 6. IPSec VPN 생성
 
+IPSec VPN Name: ipsec-vpn-b
 
+IPSec VPN Tunnel Name: ipsec-vpn-tunnel-b
 
+Peer IP: a계정 ipsec-vpn
+
+Local Network: 192.168.75.0/24
+
+Remote Network: 192.168.65.0/24
+
+IKE Version: IKEv2
+
+IKE Negotiation Mode: main
+
+IKE Pre-sharedkey: ***
+
+IPSec Proposal: aes-128
+
+DH-Group: 5
+
+Hash: sha256
+
+Lifetime: 3600
+
+DPD Retry Interval: 10/Second
+
+DPD Retry Count: 2
