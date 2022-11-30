@@ -130,3 +130,7 @@ Lifetime: 3600
 DPD Retry Interval: 10/Second
 
 DPD Retry Count: 2
+
+### 네트워크 통신 확인
+
+![1_ipsecvpn](https://github.com/jiwonYun9332/cloud/blob/b1b1ca86188cbab3d635853faf14c9aa321af378/NCP/Service/Networking/images/1_ipsecvpn.png)
