@@ -32,13 +32,21 @@ TCP,UDP 0.0.0.0/0 1-65535
 
 ICMP 0.0.0.0/0 
 
-### 5. Virtual Private Gateway 설정
+### 5. Route Table 설정
+
+>**VPC -> Route Table -> ipsec-vpc-a-default-public-table**
+
+Destination: 192.168.75.0/24 
+Target Type: VGW 
+Target Name: ipsec-vpg-a
+
+### 6. Virtual Private Gateway 설정
 
 Virtual Private Gateway Name: ipsec-vpg-a
 
 Virtual Private Gateway Group Name: ipsec-vpgg-a
 
-### 6. IPSec VPN 생성
+### 7. IPSec VPN 생성
 
 IPSec VPN Name: ipsec-vpn-a
 
@@ -95,13 +103,22 @@ TCP,UDP 0.0.0.0/0 1-65535
 
 ICMP 0.0.0.0/0 
 
-### 5. Virtual Private Gateway 설정
+### 5. Route Table 설정
+
+>**VPC -> Route Table -> ipsec-vpc-a-default-public-table**
+
+Destination: 192.168.65.0/24 
+Target Type: VGW 
+Target Name: ipsec-vpg-b
+
+
+### 6. Virtual Private Gateway 설정
 
 Virtual Private Gateway Name: ipsec-vpg-b
 
 Virtual Private Gateway Group Name: ipsec-vpgg-b
 
-### 6. IPSec VPN 생성
+### 7. IPSec VPN 생성
 
 IPSec VPN Name: ipsec-vpn-b
 
