@@ -22,7 +22,7 @@ TLS v1.0, TLS v1.1, TLS v1.2 등 암호화 통신을 지원하여 네트워크 �
 
 Classic LB
 
-지원 기능
+**지원 기능**
 
 - SSL 인증 및 암호화 설정<br>
 공인 CA에서 발급받은 SSL 인증서를 Certificate Manager에 등록하여 간단하게 로드 밸런서에 적용할 수 있습니다. 인증서의 유효기간을 확인하여 인증서가 만료되기 전에 콘솔에 등록된 고객의 연락처로 자동 통보합니다.
@@ -45,6 +45,46 @@ Network LB (TCP, DSR 지원)
 Network Proxy LB (TCP, DSR 지원안함)
 
 Application LB (HTTP/HTTPS)
+
+**지원기능**
+
+- TCP 고성능 분산 처리 ( 네트워크 로드밸런서 )<br>
+네트워크 로드 밸런서는 초당 연결 수 기준 최소 100,000 개에서 최대 400,000 개까지 성능을 보장하는 단계별 상품을 제공하여 고객 서비스 규모에 최적화된 분산 처리 성능을 제공한다.
+또한 고객 서버에서 직접 응답하는 기능(Direct Server Return, DSR)을 구현하여 트래픽 분배만을 수행함으로써 보다 빠르고 효율적인 서비스를 이용할 수 있다.
+
+- TCP 세션 관리 ( 네트워크 프록시 로드밸런서 )<br>
+: 네트워크 프록시 로드 밸런서는 프록시 방식의 통신을 제공하여 세션 유지가 필요한 TCP 기반 애플리케이션에 이용할 수 있고, 애플리케이션 로드 밸런서와 동일한 부하 분산 알고리즘을 적용할 수 있다.
+
+- SSL 인증 및 암호화 설정 ( 애플리케이션 로드밸런서, 네트워크 프록시 로드밸런서 )<br>
+: 웹 기반의 콘솔에서 SSL 인증서를 추가하고 Certificate Manager와 연동하여 편리하게 관리할 수 있습니다. TLSv1, TLSv1.1, TLSv1.2 등 SSL 프로토콜 및 SSL 암호화 스위트(Cipher suite)를 설정하여 암호화할 수 있습니다. Listener 당 최대 25개의 SSL 추가인증서 설정이 가능합니다.
+
+- 다양한 서버 부하 분산 방식 ( 애플리케이션 로드밸런서, 네트워크 프록시 로드밸런서 )<br>
+  - Round Robin
+  - Least Connection
+  - Source IP Hash
+
+- L7(Application Layer) 기능 제공( 애플리케이션 로드밸런서 )<br>
+HTTP/HTTPS 트래픽의 패킷 헤더를 기반으로 애플리케이션 계층에서 로드를 분산한다. 로드 밸런서의 리스너에 Host Header 기반 분기 처리, URL Path Patten 기반 분기 처리, 가중치 기반 분기 처리, Redirection 응답 처리와 같은 규칙이 지원되어 클라이언트의 요청을 보다 세분화하여 서버에 전달할 수 있고 이를 바탕으로 고급 서비스를 구성할 수 있다.
+
+- Load Balancer 모니터링<br>
+서버 모니터링과 마찬가지로 로드 밸런서에 대한 기본 모니터링 정보를 제공받을 수 있다. 모니터링 정보 수집 주기는 1분, 5분, 2시간, 1일 단위로 선택할 수 있다. 네트워크 로드밸런서 모니터링은 Concurrent Connection, Traffic In, (Un)Available hosts 등 5가지 항목의 정보를 제공한다. 애플리케이션 로드 밸런서는 Traffic Out 을 포함하여 6가지 항목을 제공한다.
+
+- Load Balancer 포트 설정<br>
+여러 개의 포트밸런서 규칙을 동시에 설정할 수 있다.
+
+**Load Balancer 타입별 기능 비교**
+
+| 기능 | Network Load Balancer | Network Proxy Load Balancer | Application Load Balancer |
+|  --- | --- | --- | --- |
+| 프로토콜 | TCP | TCP, TLS | HTTP, HTTPS |
+| 상태 확인 | O | O | O |
+| 로깅 | X | O | O |
+| Direct Server Return(DSR) | O | X | X |
+| 같은 인스턴스의 여러 포트로 로드 밸런싱 | X | X | O |
+| HTTP 2.0 지원 | N/A | N/A | O |
+| 경로 기반 라우팅 | N/A | N/A | O |
+| SSL 오프로드 | X | O | O |
+| 고정 세션 | O | X | O |
 
 
 
